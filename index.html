@@ -41,21 +41,36 @@
 
 <style>
 .launch{margin:36px 0;padding:30px;border-radius:24px;border:1px solid #7b42be;background:radial-gradient(circle at 90% 0%,#422071 0%,#1b1530 50%,#111321 100%);color:#fff}.launch h2{font-size:clamp(27px,4vw,42px);margin:8px 0}.launch p{color:#d3c8e6;max-width:680px;line-height:1.6}.launch-actions{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}.launch-actions button{border:0;border-radius:12px;padding:13px 19px;cursor:pointer;font-weight:800}.launch-main{background:#b4ff38;color:#18220a}.launch-alt{background:#392353;color:#fff;border:1px solid #7b42be!important}.launch-notice{font-size:13px;color:#c7b8dd!important}.launch-stats{display:flex;flex-wrap:wrap;gap:10px}.launch-stats span{padding:9px 12px;border:1px solid #594078;border-radius:30px;color:#e8dff5;font-size:13px}
+
+.switch-signup{margin-top:22px;background:#111321;border:1px solid #7b42be;border-radius:20px;padding:22px;max-width:720px}.switch-signup h3{font-size:24px;margin:0 0 4px}.switch-signup form{display:grid;gap:12px}.switch-signup label,.switch-signup legend{color:#f4efff;font-weight:650}.switch-signup input[type=email]{box-sizing:border-box;width:100%;background:#211c32;border:1px solid #70518f;border-radius:12px;color:#fff;font:inherit;padding:14px}.switch-signup fieldset{border:1px solid #57466f;border-radius:12px;display:flex;flex-wrap:wrap;gap:12px;padding:12px}.switch-signup fieldset label{font-weight:400;white-space:nowrap}.switch-signup input[type=checkbox]{accent-color:#b4ff38}.switch-signup .switch-consent{font-weight:400;line-height:1.5}.switch-signup .signup-privacy{font-size:13px;margin:0}.switch-signup button{justify-self:start;padding:13px 19px;border:0;border-radius:12px;font-weight:800;cursor:pointer}.switch-signup #switchSignupStatus{color:#b4ff38;margin:0}
 </style>
 <section id="join" class="launch" aria-label="Join the SWITCH revolution">
  <div class="eyebrow">🚀 COMING SOON · UK FIRST</div>
  <h2>Join the <span style="color:#b4ff38">SWITCH Revolution.</span></h2>
  <p>Got stuff you don't use? Turn it into something you love. Buy, sell, swap and bid on pre-loved treasures — and get rewarded for every switch. We're building something different. Be among the first to hear when it launches.</p>
  <div class="launch-stats"><span>🔄 Smarter swaps</span><span>🔨 Auctions</span><span>🎁 Rewards</span><span>🤖 SWITCH Bot</span></div>
- <div class="launch-actions"><button class="launch-main" onclick="openJoinPreview()">💚 I'm interested!</button><button class="launch-alt" onclick="shareSwitch()">📣 Share SWITCH</button></div>
- <p class="launch-notice">Early-interest preview only. This demo does not collect or send personal information. A real sign-up form will be connected before launch.</p>
+ <div class="launch-actions"><a class="launch-main" href="#switch-waitlist" style="display:inline-block;text-decoration:none;border-radius:12px;padding:13px 19px;font-weight:800">💚 Join the waiting list</a><button class="launch-alt" onclick="shareSwitch()">📣 Share SWITCH</button></div>
+ <div id="switch-waitlist" class="switch-signup">
+ <h3>💚 Get early access to SWITCH</h3><p>Be among the first to know when we launch. It's free!</p>
+ <form id="switchWaitlistForm" action="https://formsubmit.co/karlbuxton13@gmail.com" method="POST">
+ <input type="hidden" name="_subject" value="New SWITCH waiting-list registration">
+ <input type="hidden" name="_captcha" value="true">
+ <input type="hidden" name="_template" value="table">
+ <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+ <label for="switchEmail">Your email address <span aria-hidden="true">*</span></label><input id="switchEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required maxlength="254">
+ <fieldset><legend>What interests you? (optional)</legend><label><input type="checkbox" name="interests[]" value="Buying"> Buying</label><label><input type="checkbox" name="interests[]" value="Selling"> Selling</label><label><input type="checkbox" name="interests[]" value="Swapping"> Swapping</label><label><input type="checkbox" name="interests[]" value="Auctions"> Auctions</label><label><input type="checkbox" name="interests[]" value="Collectibles"> Collectibles</label></fieldset>
+ <label class="switch-consent"><input id="switchMarketing" type="checkbox" name="marketing" value="Yes"> Yes, I'd also like occasional promotional emails and offers from SWITCH. (Optional)</label>
+ <p class="signup-privacy">We use your email to manage early-access registration and launch updates. Promotional emails are optional and only sent if you opt in. Contact karlbuxton13@gmail.com to request access or deletion. Your submission will be processed by FormSubmit to deliver it to us. Do not submit sensitive information.</p>
+ <button type="submit" class="launch-main">🚀 Join SWITCH free</button><p id="switchSignupStatus" role="status" aria-live="polite"></p>
+ </form></div>
+ <p class="launch-notice">Waiting-list submissions use FormSubmit. The owner must first activate the form using the confirmation email sent to the SWITCH contact address. This is an early-access form, not a live trading service.</p>
 </section>
 <footer class="footer"><span><b style="color:#172337">SWITCH.</b> Your stuff. Their stuff. Make a switch.</span><span>Worldwide marketplace concept · Demo prototype · Not a live trading service</span></footer>
 </main>
 <div class="modalback" id="modalback" onclick="backdropClose(event)"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div>
 <script>
 
-function openJoinPreview(){openModal(`<div class="modalhead"><h2>💚 Join the SWITCH Revolution</h2><button class="close" onclick="closeModal()">×</button></div><p>We're getting SWITCH ready for its first UK users. This is a preview of the early-access form.</p><div class="field"><label>Your email address</label><input type="email" placeholder="you@example.com" disabled></div><div class="notice">The waiting list is not connected yet. We won't pretend to save your email. Once the public sign-up service is ready, this button will collect registrations securely.</div><button class="primary" onclick="closeModal()">Got it!</button>`)}
+function openJoinPreview(){openModal(`<div class="modalhead"><h2>💚 Join the SWITCH Revolution</h2><button class="close" onclick="closeModal()">×</button></div><p>We're getting SWITCH ready for its first UK users. Scroll down to the Join the waiting list section to sign up.</p><div class="field"><label>Your email address</label><input type="email" placeholder="you@example.com" disabled></div><div class="notice">Use the waiting-list form on the homepage. FormSubmit must be activated by the site owner before emails will arrive.</div><button class="primary" onclick="closeModal()">Got it!</button>`)}
 function shareSwitch(){let url=location.href.split('#')[0];if(url.startsWith('file:')||url.startsWith('sandbox:')){showToast('Publish this demo on a public hosting service before sharing a link.');return}if(navigator.share){navigator.share({title:'SWITCH — Your stuff. Their stuff. Make a switch.',text:'Join the SWITCH Revolution!',url}).catch(()=>{})}else if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>showToast('Website link copied!')).catch(()=>showToast('Copy the website address to share.'))}else showToast('Copy the website address to share.')}
 
 const categories=['All','Coins','Trading cards','Clothing','Games','DVDs & films','Electronics','Toys & collectibles','Books','Home & tools'];
